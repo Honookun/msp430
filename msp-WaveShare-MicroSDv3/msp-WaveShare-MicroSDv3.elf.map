@@ -1,0 +1,709 @@
+Archive member included because of file (symbol)
+
+/usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+                              mmcv2.o (__mulsi3)
+/usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+                              uart.o (__udivsi3)
+/usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+                              mmcv2.o (__divdi3)
+/usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+                              /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o) (__xabi_udivmod64)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o)
+                              /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o (_reset_vector__)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (__watchdog_support)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (__init_stack)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(__low_level_init.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (__low_level_init)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (__do_copy_data)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (__do_clear_bss)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(__stop_progExec__.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (__stop_progExec__)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+                              /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o) (_endless_loop__)
+/usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+                              /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o (_unexpected_)
+
+Allocating common symbols
+Common symbol       size              file
+
+command_response_buffer
+                    0x10              mmcv2.o
+written_char        0x2               mmcv2.o
+nmicnt              0x1               msp-WaveShare-MicroSDv3.o
+PipelineControlQuery
+                    0x1               mmcv2.o
+_pBuffer            0x2               SPIv2.o
+PipelineControlResponse
+                    0x1               mmcv2.o
+SD_Card             0xd               mmcv2.o
+nret                0x2               uart.o
+Prodname            0x6               mmcv2.o
+blocknbr            0x4               mmcv2.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+sfr              0x00000000         0x00000010
+peripheral_8bit  0x00000010         0x000000f0
+peripheral_16bit 0x00000100         0x00000100
+ram              0x00000200         0x00000200         xw
+infomem          0x00001000         0x00000100
+infod            0x00001000         0x00000040
+infoc            0x00001040         0x00000040
+infob            0x00001080         0x00000040
+infoa            0x000010c0         0x00000040
+rom              0x0000c000         0x00003fe0         xr
+vectors          0x0000ffe0         0x00000020
+bsl              0x00000000         0x00000000
+ram2             0x00000000         0x00000000         xw
+ram_mirror       0x00000000         0x00000000         xw
+usbram           0x00000000         0x00000000         xw
+far_rom          0x00000000         0x00000000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o
+LOAD msp-WaveShare-MicroSDv3.o
+LOAD uart.o
+LOAD SPIv2.o
+LOAD mmcv2.o
+LOAD /usr/lib/gcc/msp430/4.6.3/libgcc.a
+LOAD /usr/lib/gcc/msp430/4.6.3/../../../../msp430/lib/libc.a
+LOAD /usr/lib/gcc/msp430/4.6.3/libgcc.a
+LOAD /usr/lib/gcc/msp430/4.6.3/libcrt0.a
+                0x00000040                PROVIDE (__info_segment_size, 0x40)
+                0x00001000                PROVIDE (__infod, 0x1000)
+                0x00001040                PROVIDE (__infoc, 0x1040)
+                0x00001080                PROVIDE (__infob, 0x1080)
+                0x000010c0                PROVIDE (__infoa, 0x10c0)
+                0x00000000                __IE1 = 0x0
+                0x00000002                __IFG1 = 0x2
+                0x00000001                __IE2 = 0x1
+                0x00000003                __IFG2 = 0x3
+                0x00000048                __ADC10DTC0 = 0x48
+                0x00000049                __ADC10DTC1 = 0x49
+                0x0000004a                __ADC10AE0 = 0x4a
+                0x000001b0                __ADC10CTL0 = 0x1b0
+                0x000001b2                __ADC10CTL1 = 0x1b2
+                0x000001b4                __ADC10MEM = 0x1b4
+                0x000001bc                __ADC10SA = 0x1bc
+                0x00000056                __DCOCTL = 0x56
+                0x00000057                __BCSCTL1 = 0x57
+                0x00000058                __BCSCTL2 = 0x58
+                0x00000053                __BCSCTL3 = 0x53
+                0x00000059                __CACTL1 = 0x59
+                0x0000005a                __CACTL2 = 0x5a
+                0x0000005b                __CAPD = 0x5b
+                0x00000128                __FCTL1 = 0x128
+                0x0000012a                __FCTL2 = 0x12a
+                0x0000012c                __FCTL3 = 0x12c
+                0x00000020                __P1IN = 0x20
+                0x00000021                __P1OUT = 0x21
+                0x00000022                __P1DIR = 0x22
+                0x00000023                __P1IFG = 0x23
+                0x00000024                __P1IES = 0x24
+                0x00000025                __P1IE = 0x25
+                0x00000026                __P1SEL = 0x26
+                0x00000041                __P1SEL2 = 0x41
+                0x00000027                __P1REN = 0x27
+                0x00000028                __P2IN = 0x28
+                0x00000029                __P2OUT = 0x29
+                0x0000002a                __P2DIR = 0x2a
+                0x0000002b                __P2IFG = 0x2b
+                0x0000002c                __P2IES = 0x2c
+                0x0000002d                __P2IE = 0x2d
+                0x0000002e                __P2SEL = 0x2e
+                0x00000042                __P2SEL2 = 0x42
+                0x0000002f                __P2REN = 0x2f
+                0x00000018                __P3IN = 0x18
+                0x00000019                __P3OUT = 0x19
+                0x0000001a                __P3DIR = 0x1a
+                0x0000001b                __P3SEL = 0x1b
+                0x00000043                __P3SEL2 = 0x43
+                0x00000010                __P3REN = 0x10
+                0x0000012e                __TA0IV = 0x12e
+                0x00000160                __TA0CTL = 0x160
+                0x00000162                __TA0CCTL0 = 0x162
+                0x00000164                __TA0CCTL1 = 0x164
+                0x00000166                __TA0CCTL2 = 0x166
+                0x00000170                __TA0R = 0x170
+                0x00000172                __TA0CCR0 = 0x172
+                0x00000174                __TA0CCR1 = 0x174
+                0x00000176                __TA0CCR2 = 0x176
+                0x0000011e                __TA1IV = 0x11e
+                0x00000180                __TA1CTL = 0x180
+                0x00000182                __TA1CCTL0 = 0x182
+                0x00000184                __TA1CCTL1 = 0x184
+                0x00000186                __TA1CCTL2 = 0x186
+                0x00000190                __TA1R = 0x190
+                0x00000192                __TA1CCR0 = 0x192
+                0x00000194                __TA1CCR1 = 0x194
+                0x00000196                __TA1CCR2 = 0x196
+                0x00000060                __UCA0CTL0 = 0x60
+                0x00000061                __UCA0CTL1 = 0x61
+                0x00000062                __UCA0BR0 = 0x62
+                0x00000063                __UCA0BR1 = 0x63
+                0x00000064                __UCA0MCTL = 0x64
+                0x00000065                __UCA0STAT = 0x65
+                0x00000066                __UCA0RXBUF = 0x66
+                0x00000067                __UCA0TXBUF = 0x67
+                0x0000005d                __UCA0ABCTL = 0x5d
+                0x0000005e                __UCA0IRTCTL = 0x5e
+                0x0000005f                __UCA0IRRCTL = 0x5f
+                0x00000068                __UCB0CTL0 = 0x68
+                0x00000069                __UCB0CTL1 = 0x69
+                0x0000006a                __UCB0BR0 = 0x6a
+                0x0000006b                __UCB0BR1 = 0x6b
+                0x0000006c                __UCB0I2CIE = 0x6c
+                0x0000006d                __UCB0STAT = 0x6d
+                0x0000006e                __UCB0RXBUF = 0x6e
+                0x0000006f                __UCB0TXBUF = 0x6f
+                0x00000118                __UCB0I2COA = 0x118
+                0x0000011a                __UCB0I2CSA = 0x11a
+                0x00000120                __WDTCTL = 0x120
+                0x000010f8                __CALDCO_16MHZ = 0x10f8
+                0x000010f9                __CALBC1_16MHZ = 0x10f9
+                0x000010fa                __CALDCO_12MHZ = 0x10fa
+                0x000010fb                __CALBC1_12MHZ = 0x10fb
+                0x000010fc                __CALDCO_8MHZ = 0x10fc
+                0x000010fd                __CALBC1_8MHZ = 0x10fd
+                0x000010fe                __CALDCO_1MHZ = 0x10fe
+                0x000010ff                __CALBC1_1MHZ = 0x10ff
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.text
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+
+.rela.text
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+
+.rel.rodata
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+
+.rela.rodata
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+
+.rel.data
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+
+.rela.data
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+
+.rel.bss
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+
+.rela.bss
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000c000     0x2342
+                0x0000c000                . = ALIGN (0x2)
+ *(.init .init.*)
+ *(.init0)
+ .init0         0x0000c000        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o)
+                0x0000c000                _reset_vector__
+ *(.init1)
+ .init1         0x0000c000        0xc /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+                0x0000c000                __watchdog_support
+ *(.init2)
+ .init2         0x0000c00c        0x4 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+                0x0000c00c                __init_stack
+ *(.init3)
+ .init3         0x0000c010        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__low_level_init.o)
+                0x0000c010                __low_level_init
+ *(.init4)
+ .init4         0x0000c010       0x18 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+                0x0000c010                __do_copy_data
+ .init4         0x0000c028       0x16 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+                0x0000c028                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000c03e      0x674 msp-WaveShare-MicroSDv3.o
+                0x0000c03e                main
+ *(.fini9)
+ .fini9         0x0000c6b2        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__stop_progExec__.o)
+                0x0000c6b2                __stop_progExec__
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000c6b2        0x6 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+                0x0000c6b2                _endless_loop__
+ *(.fini .fini.*)
+                0x0000c6b8                . = ALIGN (0x2)
+                0x0000c6b8                __ctors_start = .
+ *(.ctors)
+                0x0000c6b8                __ctors_end = .
+                0x0000c6b8                __dtors_start = .
+ *(.dtors)
+                0x0000c6b8                __dtors_end = .
+                0x0000c6b8                . = ALIGN (0x2)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x0000c6b8        0x4 /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o
+                0x0000c6b8                __isr_4
+                0x0000c6b8                __isr_11
+                0x0000c6b8                __isr_5
+                0x0000c6b8                __isr_2
+                0x0000c6b8                __isr_10
+                0x0000c6b8                __isr_0
+                0x0000c6b8                __isr_8
+                0x0000c6b8                __isr_3
+                0x0000c6b8                __isr_12
+                0x0000c6b8                __isr_13
+                0x0000c6b8                __isr_1
+ .text.crt0     0x0000c6bc        0x0 /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o
+ .text          0x0000c6bc      0x378 msp-WaveShare-MicroSDv3.o
+                0x0000c6bc                __isr_14
+                0x0000c6bc                nmi_isr
+                0x0000c724                TimerA0_a0_isr
+                0x0000c724                __isr_9
+                0x0000c73c                __isr_7
+                0x0000c73c                USCIAB0RX_isr
+                0x0000c7a6                USCIAB0TX_isr
+                0x0000c7a6                __isr_6
+                0x0000c7e8                oscillatorFault
+                0x0000c826                initClock8Mhz_SMCLK_D2
+                0x0000c8b0                dispinfo
+                0x0000c91e                printSDInfo
+ .text          0x0000ca34      0x342 uart.o
+                0x0000ca34                uart_putc
+                0x0000ca5a                uart_cls
+                0x0000ca6e                uart_sepline
+                0x0000ca82                uart_CarRet
+                0x0000ca96                uart_puts
+                0x0000cab2                uart_putsNsep
+                0x0000cb12                uart_putssep
+                0x0000cb44                uart_putnbrhex
+                0x0000cc02                uart_putnbr
+                0x0000ccb6                Stop_uart
+                0x0000ccd6                Setup_uart
+ .text          0x0000cd76      0x2c8 SPIv2.o
+                0x0000cd76                setPipeliningControlRX
+                0x0000cd8e                SPI_TXCallback
+                0x0000ce06                SPI_RXCallback
+                0x0000ce9e                spiReadFrameAltDummy
+                0x0000cf06                spiReadFrame
+                0x0000cf6c                spiSendFrame
+                0x0000cfe8                INITSPISetup
+                0x0000d026                spiSendDummyByte
+ .text          0x0000d03e     0x10f0 mmcv2.o
+                0x0000d03e                getSDCardInfo
+                0x0000d04c                mmcLibInit
+                0x0000d102                logpow
+                0x0000d1a0                UnpackCIDv1
+                0x0000d1de                UnpackCSD
+                0x0000d52e                UnpackOCR
+                0x0000d55a                mmcCardInit
+                0x0000d7ba                mmcPing
+                0x0000d7d8                clockUntilQueryPipelineControl
+                0x0000d7fa                clockUntilResponsePipelineControl
+                0x0000d81e                clockUntilNotBusyPipelineControl
+                0x0000d842                clockUntilQuery
+                0x0000d87a                clockUntilNotBusy
+                0x0000d8b0                clockUntilResponse
+                0x0000d8e8                mmcReceiveDataBlock
+                0x0000d91c                mmcSendCommand
+                0x0000da3c                mmcReadPartitionTable
+                0x0000db32                mmcContinuousWriteStart
+                0x0000dbfe                mmcContinuousWriteStop
+                0x0000dc64                mmcContinuousWriteBuff
+                0x0000dd90                mmcWriteBlock
+                0x0000deec                mmcReadBlock
+ .text          0x0000e12e        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .text.libgcc   0x0000e12e       0x2c /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+                0x0000e12e                __mulsi3
+ .text          0x0000e15a        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .text.libgcc   0x0000e15a       0x40 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+                0x0000e15a                __udivsi3
+                0x0000e15a                __ext_udivmod32
+                0x0000e190                __umodsi3
+ .text          0x0000e19a        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .text.libgcc   0x0000e19a       0xb6 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+                0x0000e19a                __xabi_divmod64
+                0x0000e1fc                __divdi3
+                0x0000e222                __moddi3
+ .text          0x0000e250        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .text.libgcc   0x0000e250       0xf0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+                0x0000e250                __xabi_udivmod64
+                0x0000e2ae                __udivdi3
+                0x0000e2d4                __umoddi3
+                0x0000e302                __udivmoddi4
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__low_level_init.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__stop_progExec__.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .text          0x0000e340        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+ .text.crt0     0x0000e340        0x2 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+                0x0000e340                _unexpected_
+                0x0000e342                . = ALIGN (0x2)
+
+.rodata         0x0000e342      0x11c
+                0x0000e342                . = ALIGN (0x2)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000e342       0xff msp-WaveShare-MicroSDv3.o
+ .rodata        0x0000e441       0x1d uart.o
+                0x0000e45e                . = ALIGN (0x2)
+                0x0000e45e                _etext = .
+
+.data           0x00000200       0x1a load address 0x0000e45e
+                0x00000200                . = ALIGN (0x2)
+                0x00000200                PROVIDE (__data_start, .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000200        0x0 /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o
+ .data          0x00000200        0x0 msp-WaveShare-MicroSDv3.o
+ .data          0x00000200       0x18 uart.o
+                0x00000200                sepline
+                0x00000202                clrscrn
+                0x00000207                hexref
+ .data          0x00000218        0x2 SPIv2.o
+                0x00000218                status
+                0x00000219                CurrDummyChar
+ .data          0x0000021a        0x0 mmcv2.o
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__low_level_init.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__stop_progExec__.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .data          0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+                0x0000021a                . = ALIGN (0x2)
+                0x0000021a                _edata = .
+                0x0000e45e                PROVIDE (__data_load_start, LOADADDR (.data))
+                0x0000001a                PROVIDE (__data_size, SIZEOF (.data))
+
+.bss            0x0000021a       0x40 load address 0x0000e478
+                0x0000021a                PROVIDE (__bss_start, .)
+ *(.bss .bss.*)
+ .bss           0x0000021a        0x0 /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o
+ .bss           0x0000021a        0x2 msp-WaveShare-MicroSDv3.o
+                0x0000021a                timeoutvar
+ .bss           0x0000021c        0x0 uart.o
+ .bss           0x0000021c        0xa SPIv2.o
+                0x0000021c                _size
+                0x00000220                _i
+                0x00000222                _k
+                0x00000224                _pipeliningControlRX
+ .bss           0x00000226        0x2 mmcv2.o
+                0x00000226                curr_block_sz
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_reset_vector__.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__low_level_init.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__stop_progExec__.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .bss           0x00000228        0x0 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+ *(COMMON)
+ COMMON         0x00000228        0x1 msp-WaveShare-MicroSDv3.o
+                0x00000228                nmicnt
+ *fill*         0x00000229        0x1 00
+ COMMON         0x0000022a        0x2 uart.o
+                0x0000022a                nret
+ COMMON         0x0000022c        0x2 SPIv2.o
+                0x0000022c                _pBuffer
+ COMMON         0x0000022e       0x2c mmcv2.o
+                0x0000022e                command_response_buffer
+                0x0000023e                written_char
+                0x00000240                PipelineControlQuery
+                0x00000241                PipelineControlResponse
+                0x00000242                SD_Card
+                0x00000250                Prodname
+                0x00000256                blocknbr
+                0x0000025a                . = ALIGN (0x2)
+                0x0000025a                PROVIDE (__bss_end, .)
+                0x00000040                PROVIDE (__bss_size, SIZEOF (.bss))
+
+.noinit         0x0000025a        0x2 load address 0x0000e478
+                0x0000025a                PROVIDE (__noinit_start, .)
+ *(.noinit .noinit.*)
+ .noinit.crt0   0x0000025a        0x2 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+                0x0000025a                __wdt_clear_value
+                0x0000025c                . = ALIGN (0x2)
+                0x0000025c                PROVIDE (__noinit_end, .)
+                0x0000025c                . = ALIGN (0x2)
+                0x0000025c                _end = .
+
+.infomem        0x00001000        0x0
+ *(.infomem)
+                0x00001000                . = ALIGN (0x2)
+ *(.infomem.*)
+
+.infomemnobits  0x00001000        0x0
+ *(.infomemnobits)
+                0x00001000                . = ALIGN (0x2)
+ *(.infomemnobits.*)
+
+.infoa
+ *(.infoa .infoa.*)
+
+.infob
+ *(.infob .infob.*)
+
+.infoc
+ *(.infoc .infoc.*)
+
+.infod
+ *(.infod .infod.*)
+
+.vectors        0x0000ffe0       0x20
+                0x0000ffe0                PROVIDE (__vectors_start, .)
+ *(.vectors*)
+ .vectors       0x0000ffe0       0x20 /usr/lib/gcc/msp430/4.6.3/crt0ivtbl16.o
+                0x0000ffe0                __ivtbl_16
+                0x00010000                _vectors_end = .
+
+.fartext        0x00000000        0x0
+                0x00000000                . = ALIGN (0x2)
+ *(.fartext)
+                0x00000000                . = ALIGN (0x2)
+ *(.fartext.*)
+                0x00000000                _efartext = .
+
+.profiler
+ *(.profiler)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x11c
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x18 msp-WaveShare-MicroSDv3.o
+ .debug_aranges
+                0x00000018       0x14 uart.o
+ .debug_aranges
+                0x0000002c       0x14 SPIv2.o
+ .debug_aranges
+                0x00000040       0x14 mmcv2.o
+ .debug_aranges
+                0x00000054       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .debug_aranges
+                0x00000068       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .debug_aranges
+                0x0000007c       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .debug_aranges
+                0x00000090       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .debug_aranges
+                0x000000a4       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .debug_aranges
+                0x000000b8       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .debug_aranges
+                0x000000cc       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .debug_aranges
+                0x000000e0       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .debug_aranges
+                0x000000f4       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .debug_aranges
+                0x00000108       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x1c24
+ *(.debug_info)
+ .debug_info    0x00000000      0x440 msp-WaveShare-MicroSDv3.o
+ .debug_info    0x00000440      0x34c uart.o
+ .debug_info    0x0000078c      0x299 SPIv2.o
+ .debug_info    0x00000a25      0x6cb mmcv2.o
+ .debug_info    0x000010f0      0x12c /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .debug_info    0x0000121c      0x12c /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .debug_info    0x00001348      0x12c /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .debug_info    0x00001474      0x12c /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .debug_info    0x000015a0      0x116 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .debug_info    0x000016b6      0x116 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .debug_info    0x000017cc      0x116 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .debug_info    0x000018e2      0x116 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .debug_info    0x000019f8      0x116 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .debug_info    0x00001b0e      0x116 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x64c
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x17d msp-WaveShare-MicroSDv3.o
+ .debug_abbrev  0x0000017d      0x101 uart.o
+ .debug_abbrev  0x0000027e      0x119 SPIv2.o
+ .debug_abbrev  0x00000397      0x1ed mmcv2.o
+ .debug_abbrev  0x00000584       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .debug_abbrev  0x00000598       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .debug_abbrev  0x000005ac       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .debug_abbrev  0x000005c0       0x14 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .debug_abbrev  0x000005d4       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .debug_abbrev  0x000005e8       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .debug_abbrev  0x000005fc       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .debug_abbrev  0x00000610       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .debug_abbrev  0x00000624       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .debug_abbrev  0x00000638       0x14 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+
+.debug_line     0x00000000     0x109d
+ *(.debug_line)
+ .debug_line    0x00000000      0x2c5 msp-WaveShare-MicroSDv3.o
+ .debug_line    0x000002c5      0x163 uart.o
+ .debug_line    0x00000428      0x119 SPIv2.o
+ .debug_line    0x00000541      0x34e mmcv2.o
+ .debug_line    0x0000088f       0xd2 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_mulsi3.o)
+ .debug_line    0x00000961       0xda /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod32.o)
+ .debug_line    0x00000a3b      0x10d /usr/lib/gcc/msp430/4.6.3/libgcc.a(_divmod64.o)
+ .debug_line    0x00000b48      0x120 /usr/lib/gcc/msp430/4.6.3/libgcc.a(_udivmod64.o)
+ .debug_line    0x00000c68       0xb3 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__watchdog_support.o)
+ .debug_line    0x00000d1b       0xb1 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(__init_stack.o)
+ .debug_line    0x00000dcc       0xb7 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_copy_data.o)
+ .debug_line    0x00000e83       0xb7 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_clear_bss.o)
+ .debug_line    0x00000f3a       0xb2 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_endless_loop__.o)
+ .debug_line    0x00000fec       0xb1 /usr/lib/gcc/msp430/4.6.3/libcrt0.a(_unexpected_.o)
+
+.debug_frame    0x00000000      0x608
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x134 msp-WaveShare-MicroSDv3.o
+ .debug_frame   0x00000134      0x11a uart.o
+ .debug_frame   0x0000024e       0xdc SPIv2.o
+ .debug_frame   0x0000032a      0x2de mmcv2.o
+
+.debug_str      0x00000000      0x70f
+ *(.debug_str)
+ .debug_str     0x00000000      0x26d msp-WaveShare-MicroSDv3.o
+                                0x334 (size before relaxing)
+ .debug_str     0x0000026d       0xf7 uart.o
+                                0x1e7 (size before relaxing)
+ .debug_str     0x00000364      0x10d SPIv2.o
+                                0x201 (size before relaxing)
+ .debug_str     0x00000471      0x29e mmcv2.o
+                                0x3f4 (size before relaxing)
+
+.debug_loc      0x00000000      0x838
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x1a4 msp-WaveShare-MicroSDv3.o
+ .debug_loc     0x000001a4      0x18c uart.o
+ .debug_loc     0x00000330      0x130 SPIv2.o
+ .debug_loc     0x00000460      0x3d8 mmcv2.o
+
+.debug_macinfo  0x00000000    0x1396a
+ *(.debug_macinfo)
+ .debug_macinfo
+                0x00000000     0x5679 msp-WaveShare-MicroSDv3.o
+ .debug_macinfo
+                0x00005679     0x466f uart.o
+ .debug_macinfo
+                0x00009ce8     0x482a SPIv2.o
+ .debug_macinfo
+                0x0000e512     0x5458 mmcv2.o
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000        0xc
+ *(.debug_ranges)
+ .debug_ranges  0x00000000        0xc msp-WaveShare-MicroSDv3.o
+                0x00000400                PROVIDE (__stack, (ORIGIN (ram) + 0x200))
+                0x0000e45e                PROVIDE (__data_start_rom, _etext)
+                0x0000e478                PROVIDE (__data_end_rom, (_etext + SIZEOF (.data)))
+OUTPUT(msp-WaveShare-MicroSDv3.elf elf32-msp430)

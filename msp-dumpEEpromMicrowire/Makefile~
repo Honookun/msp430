@@ -1,0 +1,16 @@
+NAME 	:= 1dpongmsp430
+TARGCHIP := 2553
+TARGET 	:= $(NAME).elf
+CC 	:= msp430-gcc
+CFLAGS	:= -Os -ggdb3 -Wall -mmcu=msp430g$(TARGCHIP)
+OBJS 	:= $(NAME).o
+
+$(TARGET): $(OBJS)
+	$(CC) -o $(TARGET) $(CFLAGS) $(OBJS)
+
+clean :
+	rm -rf $(TARGET) $(OBJS)
+
+prog :	$(TARGET)
+	mspdebug -q rf2500 "prog $(TARGET)"
+

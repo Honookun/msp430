@@ -1,0 +1,366 @@
+#include <legacymsp430.h>
+
+#define PIN_DATA BIT0
+#define PIN_CLOCK BIT1
+#define PIN_LATCH BIT2
+
+#define PIN_PLAYER1 BIT4
+#define PIN_PLAYER2 BIT5
+
+#define SPIPORTDIR P2DIR
+#define SPIPORTOUT P2OUT
+
+#define CLOCKHI  SPIPORTOUT|=PIN_CLOCK
+#define CLOCKLO  SPIPORTOUT&=~PIN_CLOCK
+
+#define DATAHI  SPIPORTOUT|=PIN_DATA
+#define DATALO  SPIPORTOUT&=~PIN_DATA
+
+#define LATCHHI  SPIPORTOUT|=PIN_LATCH
+#define LATCHLO  SPIPORTOUT&=~PIN_LATCH
+
+#define PLAYERPORTDIR P1DIR
+#define PLAYERPORTIN P1IN
+#define PLAYERPORTIE P1IE
+#define PLAYERPORT_VECTOR PORT1_VECTOR
+#define PLAYERPORT_ISR port1_isr
+#define PLAYERPORTIFG P1IFG
+
+volatile unsigned int timercnt = 0;
+volatile unsigned int nmicnt;
+
+volatile unsigned int globpause;
+
+volatile unsigned char scoreP1;
+volatile unsigned char scoreP2;
+volatile unsigned char lastScored;
+volatile unsigned char Player1PressedButton;
+volatile unsigned char Player2PressedButton;
+
+volatile unsigned char waitingADC = 1;
+
+volatile unsigned char CurrentGameState;
+
+enum gamestate {
+  NEW_GAME,
+  FORTH,
+  BACK,
+  PRESSP1,
+  PRESSP2,
+  P1SCORED,
+  P2SCORED,
+  WINP1,
+  WINP2,
+  DISPLAY_SCORE
+};
+
+interrupt(ADC10_VECTOR) ADC_isr(void){
+  waitingADC =0;
+}
+
+interrupt(NMI_VECTOR) nmi_isr(void){ /* HERE = PANIC !*/
+  if(IFG1 & OFIFG){
+    do {
+      IFG1 &= ~OFIFG;
+      for(nmicnt= 0xff;nmicnt>0;nmicnt--);
+      P1OUT ^= 0x01;
+      
+    } while (IFG1 & OFIFG);
+    IE1 |= OFIE;
+    P1OUT &= 0x01;
+  }
+}
+interrupt (TIMER0_A0_VECTOR) TimerA0_isr (void){
+  timercnt++;
+}
+
+void delayMS(int ms){
+  timercnt = 0;
+  while(timercnt<ms);
+  // P1OUT ^= BIT6;
+
+}
+
+interrupt (PLAYERPORT_VECTOR) PLAYERPORT_ISR (void){
+  if(PLAYERPORTIFG & PIN_PLAYER1){
+    Player1PressedButton=1;
+    // do {
+    P1IES^= PIN_PLAYER1; // change fall/raise sense
+    PLAYERPORTIFG &= ~PIN_PLAYER1;
+      //	} while (PLAYERPORTIFG & PIN_PLAYER1); // clear flag
+  }else{
+    if(PLAYERPORTIFG & PIN_PLAYER2){
+	PLAYERPORTIFG &= ~PIN_PLAYER2;
+	// do {
+	P1IES^= PIN_PLAYER2; // change fall/raise sense
+	Player2PressedButton=1;
+	 //  } while (PLAYERPORTIFG & PIN_PLAYER2); // clear flag
+    }
+  }
+}
+
+void oscillatorFault(){ /*blinks in case of osc fault*/
+  BCSCTL3 = LFXT1S_2; // DEFAULT : XTS = 0 -> uses VLO for LFXT1
+  IFG1 &= ~OFIFG; // clear interrupt flg
+  BCSCTL2 |= SELM_3|SELS; // MCLK = SMCLK = LFXT1 (see -2lines = VLO)
+  
+  __bis_status_register(SCG1+SCG0); 
+  // stop MCLCK & SMCLK (settingthem vlo => cut power consumption)
+  
+  while(1){
+    P1OUT ^= 0x01;
+    __delay_cycles(500); // blink green for problem
+  }
+}
+
+void initClock(){
+  int rep;
+  P1OUT |= 0x01;
+
+  DCOCTL  = CALDCO_16MHZ;
+  BCSCTL1 = CALBC1_16MHZ;
+  /* DEVICE DEPENDENT !!! 
+     DCO running @16MHz => internal calibration
+     BOTH LINE COUNTS : RSEL are in BCSCTL1 while subfreq in range for
+     DCO is in DCOCTL
+  */
+
+  BCSCTL1 |= XT2OFF;  /* ACLK = LFXTCLK =  32768hz xtal, /1 prescaler
+			XT2 input is OFF
+		     */
+
+
+  BCSCTL2 = 0; // MCLCK = DCO / 1, SMCLK = DCO / 1 
+  BCSCTL3 = XCAP_3; /* internal XTAL caps (TI provided : 12.5pf)*/
+  rep = 0;
+  IFG1 &= ~OFIFG;
+  while (IFG1 & OFIFG){ /* loop 10 times if after xtal not stab -> problem*/
+    IFG1 &= ~OFIFG;
+    __delay_cycles(10000);
+    if(!(rep<10))
+      oscillatorFault();
+    rep++;
+  }
+  P1OUT = 0x00;
+}
+
+void disableWDT(){
+  WDTCTL= WDTPW|WDTHOLD; // disable watchdog
+}
+
+void clock(){
+  //  P1OUT ^= BIT6;
+  SPIPORTOUT &= (~PIN_CLOCK);
+SPIPORTOUT |= PIN_CLOCK;
+}
+
+void cleanLed(int leds){
+LATCHLO;
+  DATALO;
+ 
+  while(leds--)
+    clock();
+    ;
+ LATCHHI;
+}
+
+void ledforth(){ 
+  int i=0;
+  LATCHLO;
+  DATAHI;
+  clock();
+ 
+  LATCHHI;
+  DATALO;
+  for(i=0;i<56;i++){
+    delayMS(globpause);
+     LATCHLO;
+     clock();
+     LATCHHI;
+     if(i==52){
+       Player2PressedButton=0;
+     }
+  }
+ if(Player2PressedButton){
+    CurrentGameState = BACK;
+  }else{
+    CurrentGameState = P1SCORED;
+  }
+}
+void ledback(){
+   int i,j;
+  for(j=55;j>=0;j--){
+    cleanLed(56);
+  i=0;
+  if(j==4){
+    //interrupt press P1
+  }
+ LATCHLO;
+ DATAHI;
+  //digitalWrite(dataPin,HIGH);
+  clock();
+ DATALO;
+  for(i=0;i<j;i++){
+    clock();
+    if(j==3){
+         Player1PressedButton=0;
+    }
+  }
+  LATCHHI;
+
+  delayMS(globpause);
+  }
+
+  if(Player1PressedButton){
+    CurrentGameState = FORTH;
+  }else{
+    CurrentGameState = P2SCORED;
+  }
+}
+
+int dec2bin(int dec){
+  int ret = 0;
+  while(dec){
+    ret<<=1;
+    ret|=1;
+    dec--;
+  }
+  return ret;
+} 
+void displayScore(int score1, int score2){
+  int i = 0 ,locscore2;
+  cleanLed(56);
+  locscore2=dec2bin(score2);
+  LATCHLO;
+  DATAHI;
+
+  while(locscore2){
+    locscore2>>=1;
+    clock();
+    i++;
+  }
+  DATALO;
+
+  while((i+score1)<56){
+    clock();
+    i++;
+  }
+  DATAHI;
+  while(i<56){
+     clock();
+    i++;
+  }
+  LATCHHI;
+}
+
+void nextglobpause(){
+  globpause*=0.9;
+  if(globpause<10)
+    globpause=10;
+}
+
+int main(){
+  disableWDT(); // disable watchdog
+  initClock(); // see func
+  IE1 |= OFIE;  // enable clock problem interrupt
+
+  SPIPORTDIR |= PIN_DATA|PIN_LATCH|PIN_CLOCK ; // 3 pins for shiftreg
+
+  PLAYERPORTDIR = 0; // default just for show
+  P1DIR |= (BIT6 | BIT0); // dir 1 = 1&6 output // interated leds
+  //P1OUT |= BIT0;
+  // without config : all in -> no need to config for player input
+  PLAYERPORTIE = PIN_PLAYER1|PIN_PLAYER2; // enable interrupt on player pins
+
+  TACTL = TASSEL_1|ID_0|MC_1;
+    /* ACLKC = LFXT1 : 32768hz | /1 | Up to CCR0*/
+  CCR0 =  0x21;
+    // (32768 / 1000 = 32.7 = 33) 
+ 
+  TACCTL0 |= CCIE;
+  
+  /* setup adc*/
+  ADC10CTL0 = SREF_0|ADC10SHT_3|REFON|ADC10ON|ADC10IE;
+  ADC10CTL1 = ADC10SSEL_0|INCH_0|ADC10DIV_3;
+
+
+ cleanLed(56);
+ globpause=100;
+  eint();
+  while(1)
+    {
+      switch(CurrentGameState){
+      case NEW_GAME:
+	
+	ADC10CTL0 |= ENC|ADC10SC;
+	while(waitingADC);
+	if(ADC10MEM&1){
+	  CurrentGameState=FORTH;
+	}else{
+	  CurrentGameState=BACK;
+	}
+	break;
+      case FORTH:
+	nextglobpause();
+	cleanLed(56);
+	ledforth(globpause);
+	
+	break;
+      case BACK:
+	nextglobpause();
+	ledback(globpause);
+	
+	break;
+      case P1SCORED: 
+	scoreP1++;
+	lastScored=PIN_PLAYER1;
+	CurrentGameState=DISPLAY_SCORE;
+	break;
+      case P2SCORED: 
+	scoreP2++;
+	lastScored=PIN_PLAYER2;
+	CurrentGameState=DISPLAY_SCORE;
+	break;
+      case DISPLAY_SCORE:
+	displayScore(scoreP1,scoreP2);
+	delayMS(500);
+	if(lastScored==PIN_PLAYER1){
+	  CurrentGameState=BACK;
+	}else{
+	  CurrentGameState=FORTH;
+	}
+	if((scoreP1+scoreP2)>10){
+	  if(scoreP1>scoreP2){
+	    CurrentGameState=WINP1;
+	  }else{
+	    CurrentGameState=WINP2;
+	  }
+	}
+	break;
+      case WINP1:
+	while(1){
+	  displayScore(scoreP1,scoreP2);
+	  delayMS(200);
+	  displayScore(scoreP1,0);
+	  delayMS(200);
+	}
+	break;
+      case WINP2:
+	while(1){
+	  displayScore(scoreP1,scoreP2);
+	  delayMS(200);
+	  displayScore(0,scoreP2);
+	  delayMS(200);
+	}
+	break;
+      }
+      Player1PressedButton=Player2PressedButton=0;
+    }
+ 
+
+
+
+
+  return 1; 
+}
+
